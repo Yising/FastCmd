@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "deviceType": "phone",
+    "packageName": "com.yising.phone",
+    "deviceName": "手机",
+    "appDataPath": "data/data/com.yising.phone"
+  },
+  {
+    "id": 2,
+    "deviceType": "ovePhone",
+    "packageName": "com.yising.phone.ove",
+    "deviceName": "海外手机"
+  },
+  {
+    "id": 3,
+    "deviceType": "car",
+    "packageName": "com.yising.car",
+    "deviceName": "车机"
+  },
+  {
+    "id": 4,
+    "deviceType": "watch",
+    "packageName": "com.yising.watch",
+    "deviceName": "手表"
+  }
+]
