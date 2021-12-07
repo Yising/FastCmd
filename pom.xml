@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.yising.fast</groupId>
-	<artifactId>fast_tips</artifactId>
+	<artifactId>fast_cmd</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>fast_tips</name>
+	<name>fast_cmd</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
