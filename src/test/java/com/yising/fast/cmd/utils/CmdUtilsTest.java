@@ -10,11 +10,4 @@ class CmdUtilsTest {
         String cmd = "adb devices &&echo 你打我啊&&ipconfig";
         CmdUtils.execute(cmd, true);
     }
-    public static void main (String[] args){
-        try {
-            Runtime.getRuntime().exec("cmd /k start cmd.exe /k ping 192.168.0.39 -t");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

@@ -1,6 +1,6 @@
 package com.yising.fast.cmd.pojo.converter;
 
-import com.yising.fast.cmd.pojo.CmdListResponseInfo;
+import com.yising.fast.cmd.pojo.bean.CmdListResponseBody;
 import com.yising.fast.cmd.pojo.entity.Cmd;
 import com.yising.fast.cmd.utils.CmdUtils;
 import com.yising.fast.cmd.utils.CollectionUtils;
@@ -9,17 +9,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
-public class CmdBeans2CmdRespInfo implements Function<List<Cmd>, CmdListResponseInfo> {
+/**
+ * cmd实体类转换成cmd列表响应类
+ *
+ * @author yising
+ */
+public class CmdEntity2CmdRespBody implements Function<List<Cmd>, CmdListResponseBody> {
     @Override
-    public CmdListResponseInfo apply(List<Cmd> cmdList) {
-        CmdListResponseInfo responseInfo = new CmdListResponseInfo();
+    public CmdListResponseBody apply(List<Cmd> cmdList) {
+        CmdListResponseBody responseInfo = new CmdListResponseBody();
         if (CollectionUtils.isEmpty(cmdList)) {
             return responseInfo;
         }
         responseInfo.setCmdInfoList(new ArrayList<>());
-        List<CmdListResponseInfo.CmdInfo> cmdInfoList = new ArrayList<>();
+        List<CmdListResponseBody.CmdInfo> cmdInfoList = new ArrayList<>();
         cmdList.forEach(cmd -> {
-            CmdListResponseInfo.CmdInfo cmdInfo = new CmdListResponseInfo.CmdInfo();
+            CmdListResponseBody.CmdInfo cmdInfo = new CmdListResponseBody.CmdInfo();
             cmdInfo.setId(cmd.getId());
             cmdInfo.setName(cmd.getName());
             cmdInfo.setShortCmd(cmd.getShortCmd());

@@ -8,7 +8,7 @@ import java.util.Optional;
 
 
 /**
- * 配置工具类
+ * 配置解析工具类
  *
  * @author yising
  */

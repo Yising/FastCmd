@@ -17,6 +17,8 @@ import java.util.regex.Pattern;
 
 /**
  * CMD命令执行工具类
+ *
+ * @author yising
  */
 @Slf4j
 public class CmdUtils {
@@ -29,7 +31,7 @@ public class CmdUtils {
      * @param isOnNewWindow 是否在新窗口中打开
      * @return 命令执行结果字符串，如出现异常返回null
      */
-    public static String execute(@NonNull String cmdCommand, boolean isOnNewWindow) {
+    public static String execute(String cmdCommand, boolean isOnNewWindow) {
         if (StringUtils.isEmpty(cmdCommand)) {
             return "cmd is empty";
         }
@@ -37,6 +39,8 @@ public class CmdUtils {
         if (isOnNewWindow) {
             return executeOnNewWindow("\"" + cmdCommand + "\"");
         }
+
+        // 新起一个线程执行，避免readLine方法阻塞
         ExecutorService service = Executors.newFixedThreadPool(2);
         Future<String> future = service.submit(() -> executeWithoutWindow(cmdCommand));
         try {
@@ -67,7 +71,7 @@ public class CmdUtils {
             return stringBuilder.toString();
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return StringUtils.empty();
         }
     }
 
@@ -83,7 +87,7 @@ public class CmdUtils {
             return "已打开新窗口";
         } catch (Exception e) {
             e.printStackTrace();
-            return "";
+            return StringUtils.empty();
         }
     }
 

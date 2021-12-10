@@ -7,6 +7,11 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
+/**
+ * CMD实体类
+ *
+ * @author yising
+ */
 @Getter
 @Setter
 @Data

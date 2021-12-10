@@ -28,7 +28,7 @@ class CmdMatchUtilsTest {
         params.put("funNumKey", "funNum");
         params.put("funNumValue", "5243");
         String cmd = CmdUtils.replacePlaceholder(cmdString, params);
-        assertNotEquals("adb shell am start -W -a android.intent.action.VIEW -d \"fastcmd://com.yising.fast.cmd/detail?funNum=5243\" com.yising.fast", cmd);
+        assertEquals("adb shell am start -W -a android.intent.action.VIEW -d \"fastcmd://com.yising.fast.cmd/detail?funNum=5243\" com.yising.fast", cmd);
     }
 
     @Test

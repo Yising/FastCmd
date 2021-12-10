@@ -1,4 +1,4 @@
-package com.yising.fast.cmd.pojo;
+package com.yising.fast.cmd.pojo.bean;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,10 +8,12 @@ import java.util.List;
 
 /**
  * CMD查询结果响应类
- * */
+ *
+ * @author yising
+ */
 @Getter
 @Setter
-public class CmdListResponseInfo {
+public class CmdListResponseBody {
     List<CmdInfo> cmdInfoList;
 
     @Getter

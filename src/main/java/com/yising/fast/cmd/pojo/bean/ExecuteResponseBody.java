@@ -4,10 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * cmd执行结果响应类
+ *
+ * @author yising
+ */
 @Getter
 @Setter
 @AllArgsConstructor
-public class CmdResponseBean {
+public class ExecuteResponseBody {
     private String cmdStr;
 
     private String outputStr;

@@ -4,8 +4,13 @@ import lombok.Data;
 
 import java.util.Map;
 
+/**
+ * 命令执行请求参数类
+ *
+ * @author yising
+ */
 @Data
-public class ExecuteRequestBean {
+public class ExecuteRequestParam {
     private long cmdId;
 
     private String rawCmdString;
