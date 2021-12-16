@@ -1,9 +1,13 @@
 package com.yising.fast.cmd.utils;
 
-import cn.hutool.core.io.file.FileReader;
+import cn.hutool.core.io.IoUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.core.io.ClassPathResource;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
 
@@ -40,12 +44,17 @@ public class DeviceParamUtils {
      * 读取设备通用参数列表
      */
     private static Optional<JSONObject> getCommonParams() {
-        FileReader fileReader = new FileReader(COMMON_PARAMS_FILE);
-        String str = fileReader.readString();
-        if (StringUtils.isEmpty(str)) {
-            return Optional.empty();
+        ClassPathResource classPathResource = new ClassPathResource(COMMON_PARAMS_FILE);
+        try (InputStream is = classPathResource.getInputStream()) {
+            String str = IoUtil.read(is, StandardCharsets.UTF_8);
+            if (StringUtils.isEmpty(str)) {
+                return Optional.empty();
+            }
+            return Optional.ofNullable(JSONObject.parseObject(str));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return Optional.ofNullable(JSONObject.parseObject(str));
+        return Optional.empty();
     }
 
     /**
@@ -54,8 +63,13 @@ public class DeviceParamUtils {
      * @param deviceId 设备类型id
      */
     private static Optional<JSONObject> getDeviceParams(int deviceId) {
-        FileReader fileReader = new FileReader(DEVICE_PARAMS_FILE);
-        String str = fileReader.readString();
+        String str = StringUtils.empty();
+        ClassPathResource classPathResource = new ClassPathResource(DEVICE_PARAMS_FILE);
+        try (InputStream is = classPathResource.getInputStream()) {
+            str = IoUtil.read(is, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         if (StringUtils.isEmpty(str)) {
             return Optional.empty();
         }
